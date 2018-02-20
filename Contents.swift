@@ -14,6 +14,19 @@ func filterLessThanValue(value: Int, numbers: [Int]) -> [Int] {
     return filteredSetNumbers
 }
 
-let filteredList = filterLessThanValue(value: 5, numbers: [1,3,8,2,99,32])
+//let filteredList = filterLessThanValue(value: 5, numbers: [1,3,8,2,99,32])
 
+func filterWithClosure(closure: (Int) -> Bool, numbers:[Int]) -> [Int] {
+var filteredNumbers = [Int]()
+for num in numbers {
+        if closure(num) {
+            filteredNumbers.append(num)
+    }
+}
+return filteredNumbers
+}
 
+let filteredList = filterWithClosure(closure: { (num) -> Bool in
+return num < 5
+}, numbers: [1,3,8,2,99,32])
+print(filteredList)
